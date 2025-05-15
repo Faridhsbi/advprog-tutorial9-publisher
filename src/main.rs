@@ -15,14 +15,14 @@ impl MessageHandler<UserCreatedEventMessage> for UserCreatedHandler {
             println!("Message received on handler 1: {:?}", message);
             Ok(())
         }
-        
+
     fn get_handler_action(&self) -> String {
         "UserCreatedHandler".to_owned()
     }
 }
 
 fn main() {
-    let mut p = CrosstownBus::new_queue_publisher("amqp://guest:guest@localhost:5672".to_owned()).unwrap();
+    let mut p = CrosstownBus::new_queue_publisher("amqps://wrtxtsab:xWvfBpyNEgZOvbNOITjC3kNnS9H73yYp@stingray.rmq.cloudamqp.com/wrtxtsab".to_owned()).unwrap();
     _ = p.publish_event("user_created".to_owned(),
    UserCreatedEventMessage { user_id: "1".to_owned(), user_name:
    "2306152512-Amir".to_owned() });
