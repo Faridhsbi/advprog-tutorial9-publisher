@@ -31,3 +31,8 @@ Spike pada grafik RabbitMQ terjadi karena setiap kali menjalankan program publis
 
 ![bonus sending](images/bonus-sending-event.png)
 
+### Monitoring Chart based on Publisher with Cloud
+
+![monitoring cloud](images/bonus-monitoring.png)
+
+Ketika saya menjalankan cargo run dengan menggunakan cloud, ada sedikit perbedaan pada spike yaitu spike pada cloud terlihat lebih landai dibandingkan dengan localhost. Hal tersebut dikarenakan koneksi ke broker cloud (CloudAMQP) menambahkan lapisan TLS dan latensi jaringan. Setiap frame AMQPS perlu dienkripsi/dekripsi dan melewati internet. Maka waktu round-trip untuk setiap publish dan ack menjadi lebih panjang daripada di localhost; akibatnya, ketika publisher mengirim batch pesan, lonjakan pada grafik terdistribusi selama periode yang lebih panjang, dan setelah itu penurunan antrian juga terjadi lebih perlahan dibanding saat broker ada di mesin lokal dengan latensi hampir nol.
