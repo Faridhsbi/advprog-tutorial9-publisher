@@ -12,3 +12,8 @@ URL koneksi dari `amqp://guest:guest@localhost:5672` sama di program publisher m
 ## Running RabbitMQ
 
 ![running rabbitMQ](images/running-publisher.png)
+
+
+## Sending and Processing Event
+
+![sending event](images/sending-event.png)
