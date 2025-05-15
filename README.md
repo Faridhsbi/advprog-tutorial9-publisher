@@ -17,3 +17,9 @@ URL koneksi dari `amqp://guest:guest@localhost:5672` sama di program publisher m
 ## Sending and Processing Event
 
 ![sending event](images/sending-event.png)
+
+## Monitoring Chart based on Publisher
+![monitoring chart](images/monitoring-chart-1.png)
+![monitoring chart](images/monitoring-chart-2.png)
+
+Spike pada grafik RabbitMQ terjadi karena setiap kali menjalankan program publisher, ia langsung mengirim lima pesan secara beruntun ke broker, sehingga dalam sekejap laju publish (publish rate) melonjak tajam. Setelah itu, subscriber baru mengambil dan memproses pesan-pesan tersebut—terlihat sebagai kenaikan laju consume (consume rate) hingga grafik kembali ke level normal ketika antrean kosong.
